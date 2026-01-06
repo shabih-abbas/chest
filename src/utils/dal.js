@@ -35,22 +35,23 @@ export const getThoughts = async (entryId) =>{
     const results = await db.select().from(thoughts).where(eq(thoughts.entryId, entryId))
     return results;
 }
-export const createEntry= async (user, date) =>{
+export const createEntry= async (userId, date) =>{
     const entryDate = new Date(date);
-    entryDate.setHours(0,0,0,0)
-    const results = await db.select().from(entry).where(and(eq(entry.userId, user.id),eq(entry.date, entryDate)))
-    
+    entryDate.setHours(0,0,0,0);
+    const results = await db.select().from(entry).where(and(eq(entry.userId, userId),eq(entry.date, entryDate)))
     if(results.length > 0) return results[0]
-    const newEntry = await db.insert(entry).values({
+    await db.insert(entry).values({
         date: entryDate,
-        userId: user.id,
+        userId: userId,
     }).returning();
-    return newEntry;
+    const newEntry = await db.select().from(entry).where(and(eq(entry.userId, userId),eq(entry.date, entryDate)))// for db sync
+    return newEntry[0];
 }
-export const createThought= async (entryId, content, date) => {
+export const createThought= async (userId, content, date) => {
+    const entry = await createEntry(userId, date)
     await db.insert(thoughts).values({
         content: content,
-        entryId: entryId,
+        entryId: entry.id,
         time: date,
     })
 }

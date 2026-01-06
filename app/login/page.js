@@ -20,16 +20,16 @@ export default function LoginPage(){
             <form action={formAction} className="bg-card w-full space-y-8 p-5">
                 <div className="flex gap-2 items-center">
                     <label className="w-20 font-semibold font-mono text-foreground" htmlFor="email">Email</label>
-                    <input id="email" name="email" type="email" required className="rounded p-1 flex-1 border border-border user-invalid:border-red-500 text-foreground outline-none" />
+                    <input id="email" name="email" type="email" required className="rounded p-1 flex-1 min-w-10 border border-border user-invalid:border-red-500 text-foreground outline-none" />
                 </div>
                 <div className="flex gap-2 items-center">
                     <label className="w-20 font-semibold font-mono text-foreground" htmlFor="password">Password</label>
-                    <input id="password" name="password" type="password" minLength={5} required className="rounded p-1 flex-1 border border-border user-invalid:border-red-500 text-foreground outline-none" />
+                    <input id="password" name="password" type="password" minLength={5} required className="rounded p-1 flex-1 min-w-10 border border-border user-invalid:border-red-500 text-foreground outline-none" />
                 </div>
                 <button disabled={isPending} type="submit" className="cursor-pointer focus-visible:outline-2 outline-foreground bg-primary font-bold text-lg py-2 px-4 disabled:bg-muted w-full rounded">Login</button>
             </form>
-            {formState.isError && <p className="text-red-500">{formState.message}</p>}
-            <Link href="/register" className="text-foreground hover:underline italic">Don't have an account, Create one here</Link>
+            {formState.isError && <p className="text-red-500 my-3">{formState.message}</p>}
+            <Link href="/register" className="text-foreground hover:underline italic my-3">Don't have an account, Create one here</Link>
             
         </div>
         

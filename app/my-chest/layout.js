@@ -10,7 +10,7 @@ export default function MyChestLayout({children}){
             <button onClick={()=> startTransition(async ()=> {
                 await logout();
                 router.push('/')
-                })} disabled={isPending} className="border-2 border-border px-4 py-2 rounded cursor-pointer font-bold text-xl fixed top-5 right-5 disabled:bg-muted text-foreground">Logout</button>
+                })} disabled={isPending} className="border-2 border-border lg:px-4 lg:py-2 px-2 py-1 rounded cursor-pointer font-bold text-xl fixed top-5 right-5 disabled:bg-muted text-foreground">Logout</button>
             {children}
         </div>
     )

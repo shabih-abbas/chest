@@ -106,8 +106,7 @@ export const newThought = async (formData) =>{
     const date = new Date(formData.get("date"));
 
     try{
-        const entry = await createEntry(user, date)
-        await createThought(entry.id, content, date)
+        await createThought(user.id, content, date)
         return {
             isError: false,
             success: true,

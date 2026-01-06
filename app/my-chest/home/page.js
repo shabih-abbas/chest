@@ -2,6 +2,8 @@ import Link from "next/link"
 import { getUser } from "@/src/utils/dal";
 import Entries from "@/src/components/Entries";
 import EntryFilters from "@/src/components/EntryFilters";
+import { Suspense } from "react";
+import Loader from "@/src/components/Loader";
 
 export default async function HomePage({searchParams}){
     const user = await getUser();
@@ -19,7 +21,13 @@ export default async function HomePage({searchParams}){
                 <EntryFilters startYear={startYear} defaultYear={defaultYear} defaultMonth={defaultMonth} />
             </div>
             <div className="mt-8">
-                <Entries userId={user.id} month={defaultMonth} year={defaultYear} />
+                <Suspense fallback={
+                    <div className="flex justify-center">
+                        <Loader />
+                    </div>
+                }>
+                    <Entries userId={user.id} month={defaultMonth} year={defaultYear} />
+                </Suspense>
             </div>
             
         </div>
