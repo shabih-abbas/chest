@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* 1. Define all your base variables here */
+  --color-background: #fafaf9;
+  --color-foreground: #1c1917;
+  --color-card: #ffffff;
+  --color-border: #292524;
+  --color-primary: #10b981;
+  --color-muted: #78716c;
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui;
+  --font-mono: var(--font-mono), monospace;
+}
+
+/* 2. Put your overrides OUTSIDE the @theme block */
+@layer base {
+  .dark {
+    --color-background: #0c0a09;
+    --color-foreground: #f5f5f4;
+    --color-card: #1c1917;
+    --color-border: #e7e5e4;
+    --color-primary: #34d399;
+    --color-muted: #a8a29e;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
