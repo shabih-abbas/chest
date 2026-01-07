@@ -37,7 +37,7 @@ export const getThoughts = async (entryId) =>{
 }
 export const createEntry= async (userId, date) =>{
     const entryDate = new Date(date);
-    entryDate.setHours(0,0,0,0);
+    entryDate.setUTCHours(0,0,0,0);
     const results = await db.select().from(entry).where(and(eq(entry.userId, userId),eq(entry.date, entryDate)))
     if(results.length > 0) return results[0]
     await db.insert(entry).values({
