@@ -3,7 +3,7 @@
 **Chest** is a private digital sanctuary for your daily thoughts. It provides a structured way to log entries, automatically organizing your life by date and ensuring your data is secure behind personal authentication.
 
 You can view the live version of Chest at:  
-[**https://chest-journal.vercel.app**](https://chest-journal.vercel.app)
+[**https://my-chest.vercel.app/**](https://my-chest.vercel.app/)
 
 ---
 
