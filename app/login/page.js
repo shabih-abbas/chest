@@ -3,6 +3,8 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useActionState } from "react"
 import { login } from "../actions"
+import PasswordInput from "@/src/components/PasswordInput"
+
 export default function LoginPage(){
     const router = useRouter();
     
@@ -24,7 +26,8 @@ export default function LoginPage(){
                 </div>
                 <div className="flex gap-2 items-center">
                     <label className="w-20 font-semibold font-mono text-foreground" htmlFor="password">Password</label>
-                    <input id="password" name="password" type="password" minLength={5} required className="rounded p-1 flex-1 min-w-10 border border-border user-invalid:border-red-500 text-foreground outline-none" />
+                    {/* <input id="password" name="password" type="password" minLength={5} required className="rounded p-1 flex-1 min-w-10 border border-border user-invalid:border-red-500 text-foreground outline-none" /> */}
+                    <PasswordInput />
                 </div>
                 <button disabled={isPending} type="submit" className="cursor-pointer focus-visible:outline-2 outline-foreground bg-primary font-bold text-lg py-2 px-4 disabled:bg-muted w-full rounded">Login</button>
             </form>
